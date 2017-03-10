@@ -10,13 +10,14 @@ print(os.getcwd())
 data = open('sketch.txt')
 
 for each_line in data:
-    if each_line.find(':') != -1:
+    try:
         (role,line_spoken) = each_line.split(':',1)
         print(role, end='')
         print(' said:', end='')
         print(line_spoken, end='')
-    else:
-        print(each_line,end='')
+    except:
+        #ignora o erro e continua o programa
+        pass
 
 data.close()
 
