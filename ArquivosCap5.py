@@ -25,6 +25,25 @@ def iterableList(list):
     return list_aux
 
 
+def unique(list):
+    unique_list = []
+    for time in list:
+        if time not in unique_list:
+            unique_list.append(time)
+    return unique_list
+
+
+def printing(name, list, list_order, list_unique, list_three_best):
+    print(name)
+    print('Data')
+    print(list)
+    print('Order')
+    print(list_order)
+    print('Unique')
+    print(list_unique)
+    print('three best times')
+    print(list_three_best)
+
 os.chdir('ArquivosApoio/chapter5')
 
 james = [];
@@ -38,21 +57,20 @@ julie = importa_arquivos('julie.txt')
 mikey = importa_arquivos('mikey.txt')
 sarah = importa_arquivos('sarah.txt')
 
-james = iterableList(james)
-julie = iterableList(julie)
-mikey = iterableList(mikey)
-sarah = iterableList(sarah)
+james_order = ordena_lista(iterableList(james))
+julie_order = ordena_lista(iterableList(julie))
+mikey_order = ordena_lista(iterableList(mikey))
+sarah_order = ordena_lista(iterableList(sarah))
 
-james_order = ordena_lista(james)
-julie_order = ordena_lista(julie)
-mikey_order = ordena_lista(mikey)
-sarah_order = ordena_lista(sarah)
+james_unique = unique(james_order)
+julie_unique = unique(julie_order)
+mikey_unique = unique(mikey_order)
+sarah_unique = unique(sarah_order)
 
-print(james)
-print(james_order)
-print(julie)
-print(julie_order)
-print(mikey)
-print(mikey_order)
-print(sarah)
-print(sarah_order)
+printing('james', james, james_order, james_unique, james_unique[0:3])
+
+printing('julie', julie, julie_order, julie_unique, julie_unique[0:3])
+
+printing('mikey', mikey, mikey_order, mikey_unique, mikey_unique[0:3])
+
+printing('sarah', sarah, sarah_order, sarah_unique, sarah_order[0:3])
