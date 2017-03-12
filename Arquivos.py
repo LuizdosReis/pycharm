@@ -1,5 +1,5 @@
 import os
-import nester
+import pickle
 
 #printa a pasta que voce esta
 print(os.getcwd())
@@ -31,9 +31,9 @@ except IOError:
     print('the data file is missing!')
 
 try:
-    with open('OutMan.txt', 'w') as out_man:
-        nester.print_lol(man, file=out_man)
-    with open('OtherMan.txt', 'w') as other_man:
-        nester.print_lol(other, file=other_man)
-except IOError:
-    print('the data file is missing!')
+    with open('OutMan.txt', 'wb') as out_man:
+        pickle.dump(man, out_man)
+    with open('OtherMan.txt', 'wb') as out_other_man:
+        pickle.dump(other, out_other_man)
+except pickle.PickleError as perr:
+    print('Pickling error: ' + str(perr))
