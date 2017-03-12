@@ -2,8 +2,13 @@ import os
 
 
 def importa_arquivos(nome_arquivo):
-    with open(nome_arquivo) as file:
-        return file.readline().strip().split(',')
+    try:
+        with open(nome_arquivo) as file:
+            return file.readline().strip().split(',')
+    except IOError as err:
+        print('Erro: ' + str(err))
+        return None
+
 
 
 def ordena_lista(lista):
@@ -26,11 +31,11 @@ def iterableList(list):
 
 
 def unique(list):
-    unique_list = []
+    list_unique = []
     for time in list:
-        if time not in unique_list:
-            unique_list.append(time)
-    return unique_list
+        if time not in list_unique:
+            list_unique.append(time)
+    return list_unique
 
 
 def printing(name, list, list_order, list_unique, list_three_best):
