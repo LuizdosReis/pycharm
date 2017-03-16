@@ -1,14 +1,11 @@
 import os
-
+from athlete import Athlete
 
 def importa_arquivos(nome_arquivo):
     try:
         with open(nome_arquivo) as file:
             list = file.readline().strip().split(',')
-            athlete = {}
-            athlete['name'] = list.pop(0)
-            athlete['dob'] = list.pop(0)
-            athlete['times'] = unique(ordena_lista(iterableList(list)))[0:3]
+            athlete = Athlete(list.pop(0), list.pop(0), unique(ordena_lista(iterableList(list))))
             return athlete
     except IOError as err:
         print('Erro: ' + str(err))
@@ -42,13 +39,13 @@ def unique(list):
     return list_unique
 
 
-def printing(dic):
+def printing(athlete):
     print('name')
-    print(dic['name'])
+    print(athlete.name)
     print('dob')
-    print(dic['dob'])
+    print(athlete.dob)
     print('times')
-    print(dic['times'])
+    print(athlete.top3())
 
 
 os.chdir('ArquivosApoio/chapter6')
@@ -62,3 +59,4 @@ printing(sarah2)
 printing(james2)
 printing(julie2)
 printing(mikey2)
+
